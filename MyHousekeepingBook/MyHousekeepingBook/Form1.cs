@@ -16,5 +16,37 @@ namespace MyHousekeepingBook
 		{
 			InitializeComponent();
 		}
+
+		
+		private void MainMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+		{
+
+
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void buttonAdd_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void buttonChange_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void buttonDelete_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void buttonEnd_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

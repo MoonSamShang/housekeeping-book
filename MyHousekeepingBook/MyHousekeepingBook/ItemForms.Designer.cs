@@ -33,7 +33,7 @@
 			this.ItemName = new System.Windows.Forms.Label();
 			this.Price = new System.Windows.Forms.Label();
 			this.Remark = new System.Windows.Forms.Label();
-			this.comCategory = new System.Windows.Forms.ComboBox();
+			this.cmbCategory = new System.Windows.Forms.ComboBox();
 			this.txtItem = new System.Windows.Forms.TextBox();
 			this.txtMoney = new System.Windows.Forms.TextBox();
 			this.txtRemarks = new System.Windows.Forms.TextBox();
@@ -57,7 +57,6 @@
 			this.Category.Size = new System.Drawing.Size(35, 13);
 			this.Category.TabIndex = 1;
 			this.Category.Text = "分類";
-			this.Category.Click += new System.EventHandler(this.Category_Click);
 			// 
 			// ItemName
 			// 
@@ -68,7 +67,6 @@
 			this.ItemName.Size = new System.Drawing.Size(35, 13);
 			this.ItemName.TabIndex = 2;
 			this.ItemName.Text = "品名";
-			this.ItemName.Click += new System.EventHandler(this.ItemName_Click);
 			// 
 			// Price
 			// 
@@ -79,7 +77,6 @@
 			this.Price.Size = new System.Drawing.Size(35, 13);
 			this.Price.TabIndex = 3;
 			this.Price.Text = "金額";
-			this.Price.Click += new System.EventHandler(this.Price_Click);
 			// 
 			// Remark
 			// 
@@ -90,17 +87,15 @@
 			this.Remark.Size = new System.Drawing.Size(35, 13);
 			this.Remark.TabIndex = 4;
 			this.Remark.Text = "備考";
-			this.Remark.Click += new System.EventHandler(this.Remark_Click);
 			// 
-			// comCategory
+			// cmbCategory
 			// 
-			this.comCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comCategory.FormattingEnabled = true;
-			this.comCategory.Location = new System.Drawing.Point(349, 47);
-			this.comCategory.Name = "comCategory";
-			this.comCategory.Size = new System.Drawing.Size(121, 20);
-			this.comCategory.TabIndex = 5;
-			this.comCategory.SelectedIndexChanged += new System.EventHandler(this.comCategory_SelectedIndexChanged);
+			this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbCategory.FormattingEnabled = true;
+			this.cmbCategory.Location = new System.Drawing.Point(349, 47);
+			this.cmbCategory.Name = "cmbCategory";
+			this.cmbCategory.Size = new System.Drawing.Size(121, 20);
+			this.cmbCategory.TabIndex = 5;
 			// 
 			// txtItem
 			// 
@@ -108,7 +103,6 @@
 			this.txtItem.Name = "txtItem";
 			this.txtItem.Size = new System.Drawing.Size(100, 19);
 			this.txtItem.TabIndex = 6;
-			this.txtItem.TextChanged += new System.EventHandler(this.txtItem_TextChanged);
 			// 
 			// txtMoney
 			// 
@@ -116,7 +110,6 @@
 			this.txtMoney.Name = "txtMoney";
 			this.txtMoney.Size = new System.Drawing.Size(100, 19);
 			this.txtMoney.TabIndex = 7;
-			this.txtMoney.TextChanged += new System.EventHandler(this.txtMoney_TextChanged);
 			// 
 			// txtRemarks
 			// 
@@ -124,7 +117,6 @@
 			this.txtRemarks.Name = "txtRemarks";
 			this.txtRemarks.Size = new System.Drawing.Size(100, 19);
 			this.txtRemarks.TabIndex = 8;
-			this.txtRemarks.TextChanged += new System.EventHandler(this.txtRemarks_TextChanged);
 			// 
 			// buttonOK
 			// 
@@ -137,7 +129,6 @@
 			this.buttonOK.TabIndex = 9;
 			this.buttonOK.Text = "登録";
 			this.buttonOK.UseVisualStyleBackColor = false;
-			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			// 
 			// buttonCancel
 			// 
@@ -150,7 +141,6 @@
 			this.buttonCancel.TabIndex = 10;
 			this.buttonCancel.Text = "キャンセル";
 			this.buttonCancel.UseVisualStyleBackColor = false;
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// ItemForms
 			// 
@@ -162,7 +152,7 @@
 			this.Controls.Add(this.txtRemarks);
 			this.Controls.Add(this.txtMoney);
 			this.Controls.Add(this.txtItem);
-			this.Controls.Add(this.comCategory);
+			this.Controls.Add(this.cmbCategory);
 			this.Controls.Add(this.Remark);
 			this.Controls.Add(this.Price);
 			this.Controls.Add(this.ItemName);
@@ -183,7 +173,7 @@
 		private System.Windows.Forms.Label ItemName;
 		private System.Windows.Forms.Label Price;
 		private System.Windows.Forms.Label Remark;
-		private System.Windows.Forms.ComboBox comCategory;
+		private System.Windows.Forms.ComboBox cmbCategory;
 		private System.Windows.Forms.TextBox txtItem;
 		private System.Windows.Forms.TextBox txtMoney;
 		private System.Windows.Forms.TextBox txtRemarks;

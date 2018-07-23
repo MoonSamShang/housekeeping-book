@@ -29,24 +29,5 @@ namespace MyHousekeepingBook
 
 		}
 
-		private void buttonAdd_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void buttonChange_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void buttonDelete_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void buttonEnd_Click(object sender, EventArgs e)
-		{
-
-		}
 	}
 }

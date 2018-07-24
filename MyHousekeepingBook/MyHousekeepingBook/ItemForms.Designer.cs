@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.monCalendar = new System.Windows.Forms.MonthCalendar();
 			this.Category = new System.Windows.Forms.Label();
 			this.ItemName = new System.Windows.Forms.Label();
@@ -39,6 +40,10 @@
 			this.txtRemarks = new System.Windows.Forms.TextBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.categoryDataSet = new MyHousekeepingBook.CategoryDataSet();
+			this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// monCalendar
@@ -90,6 +95,8 @@
 			// 
 			// cmbCategory
 			// 
+			this.cmbCategory.DataSource = this.categoryDataTableBindingSource;
+			this.cmbCategory.DisplayMember = "分類";
 			this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbCategory.FormattingEnabled = true;
 			this.cmbCategory.Location = new System.Drawing.Point(349, 47);
@@ -142,6 +149,16 @@
 			this.buttonCancel.Text = "キャンセル";
 			this.buttonCancel.UseVisualStyleBackColor = false;
 			// 
+			// categoryDataSet
+			// 
+			this.categoryDataSet.DataSetName = "CategoryDataSet";
+			this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// categoryDataTableBindingSource
+			// 
+			this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
+			this.categoryDataTableBindingSource.DataSource = this.categoryDataSet;
+			// 
 			// ItemForms
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -161,6 +178,8 @@
 			this.Name = "ItemForms";
 			this.Text = "登録";
 			this.Load += new System.EventHandler(this.ItemForms_Load);
+			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -179,5 +198,7 @@
 		private System.Windows.Forms.TextBox txtRemarks;
 		private System.Windows.Forms.Button buttonOK;
 		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.BindingSource categoryDataTableBindingSource;
+		private CategoryDataSet categoryDataSet;
 	}
 }

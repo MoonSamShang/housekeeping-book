@@ -28,15 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.MainMenu = new System.Windows.Forms.MenuStrip();
 			this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.dgv = new System.Windows.Forms.DataGridView();
-			this.buttonAdd = new System.Windows.Forms.Button();
-			this.buttonChange = new System.Windows.Forms.Button();
-			this.buttonDelete = new System.Windows.Forms.Button();
-			this.buttonEnd = new System.Windows.Forms.Button();
 			this.編集EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.追加AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.変更CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +42,22 @@
 			this.集計表示SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ヘルプHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.バージョン情報VToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.dgv = new System.Windows.Forms.DataGridView();
+			this.buttonAdd = new System.Windows.Forms.Button();
+			this.buttonChange = new System.Windows.Forms.Button();
+			this.buttonDelete = new System.Windows.Forms.Button();
+			this.buttonEnd = new System.Windows.Forms.Button();
+			this.moneyDataSet = new MyHousekeepingBook.MoneyDataSet();
+			this.moneyDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.日付DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.分類DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.品名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.金額DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.備考DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MainMenu.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// MainMenu
@@ -76,18 +86,89 @@
 			// SaveStripMenuItem
 			// 
 			this.SaveStripMenuItem.Name = "SaveStripMenuItem";
-			this.SaveStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.SaveStripMenuItem.Text = "保存(S)";
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.ExitToolStripMenuItem.Text = "終了(&X)";
+			// 
+			// 編集EToolStripMenuItem
+			// 
+			this.編集EToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.追加AToolStripMenuItem,
+            this.変更CToolStripMenuItem,
+            this.削除DToolStripMenuItem});
+			this.編集EToolStripMenuItem.Name = "編集EToolStripMenuItem";
+			this.編集EToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+			this.編集EToolStripMenuItem.Text = "編集(&E)";
+			// 
+			// 追加AToolStripMenuItem
+			// 
+			this.追加AToolStripMenuItem.Name = "追加AToolStripMenuItem";
+			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.追加AToolStripMenuItem.Text = "追加(&A)";
+			// 
+			// 変更CToolStripMenuItem
+			// 
+			this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
+			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.変更CToolStripMenuItem.Text = "変更(&C)";
+			// 
+			// 削除DToolStripMenuItem
+			// 
+			this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
+			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.削除DToolStripMenuItem.Text = "削除(&D)";
+			// 
+			// 表示VToolStripMenuItem
+			// 
+			this.表示VToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.一覧表LToolStripMenuItem,
+            this.集計表示SToolStripMenuItem});
+			this.表示VToolStripMenuItem.Name = "表示VToolStripMenuItem";
+			this.表示VToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+			this.表示VToolStripMenuItem.Text = "表示(&V)";
+			// 
+			// 一覧表LToolStripMenuItem
+			// 
+			this.一覧表LToolStripMenuItem.Name = "一覧表LToolStripMenuItem";
+			this.一覧表LToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.一覧表LToolStripMenuItem.Text = "一覧表(&L)";
+			// 
+			// 集計表示SToolStripMenuItem
+			// 
+			this.集計表示SToolStripMenuItem.Name = "集計表示SToolStripMenuItem";
+			this.集計表示SToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.集計表示SToolStripMenuItem.Text = "集計表示(&S)";
+			// 
+			// ヘルプHToolStripMenuItem
+			// 
+			this.ヘルプHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.バージョン情報VToolStripMenuItem});
+			this.ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
+			this.ヘルプHToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+			this.ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
+			// 
+			// バージョン情報VToolStripMenuItem
+			// 
+			this.バージョン情報VToolStripMenuItem.Name = "バージョン情報VToolStripMenuItem";
+			this.バージョン情報VToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+			this.バージョン情報VToolStripMenuItem.Text = "バージョン情報(&V)";
 			// 
 			// dgv
 			// 
+			this.dgv.AutoGenerateColumns = false;
 			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.日付DataGridViewTextBoxColumn,
+            this.分類DataGridViewTextBoxColumn,
+            this.品名DataGridViewTextBoxColumn,
+            this.金額DataGridViewTextBoxColumn,
+            this.備考DataGridViewTextBoxColumn});
+			this.dgv.DataSource = this.moneyDataTableBindingSource;
 			this.dgv.Location = new System.Drawing.Point(37, 51);
 			this.dgv.Name = "dgv";
 			this.dgv.RowTemplate.Height = 21;
@@ -138,68 +219,45 @@
 			this.buttonEnd.Text = "終了";
 			this.buttonEnd.UseVisualStyleBackColor = false;
 			// 
-			// 編集EToolStripMenuItem
+			// moneyDataSet
 			// 
-			this.編集EToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.追加AToolStripMenuItem,
-            this.変更CToolStripMenuItem,
-            this.削除DToolStripMenuItem});
-			this.編集EToolStripMenuItem.Name = "編集EToolStripMenuItem";
-			this.編集EToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-			this.編集EToolStripMenuItem.Text = "編集(&E)";
+			this.moneyDataSet.DataSetName = "MoneyDataSet";
+			this.moneyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
-			// 追加AToolStripMenuItem
+			// moneyDataTableBindingSource
 			// 
-			this.追加AToolStripMenuItem.Name = "追加AToolStripMenuItem";
-			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.追加AToolStripMenuItem.Text = "追加(&A)";
+			this.moneyDataTableBindingSource.DataMember = "moneyDataTable";
+			this.moneyDataTableBindingSource.DataSource = this.moneyDataSet;
 			// 
-			// 変更CToolStripMenuItem
+			// 日付DataGridViewTextBoxColumn
 			// 
-			this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
-			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.変更CToolStripMenuItem.Text = "変更(&C)";
+			this.日付DataGridViewTextBoxColumn.DataPropertyName = "日付";
+			this.日付DataGridViewTextBoxColumn.HeaderText = "日付";
+			this.日付DataGridViewTextBoxColumn.Name = "日付DataGridViewTextBoxColumn";
 			// 
-			// 削除DToolStripMenuItem
+			// 分類DataGridViewTextBoxColumn
 			// 
-			this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
-			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.削除DToolStripMenuItem.Text = "削除(&D)";
+			this.分類DataGridViewTextBoxColumn.DataPropertyName = "分類";
+			this.分類DataGridViewTextBoxColumn.HeaderText = "分類";
+			this.分類DataGridViewTextBoxColumn.Name = "分類DataGridViewTextBoxColumn";
 			// 
-			// 表示VToolStripMenuItem
+			// 品名DataGridViewTextBoxColumn
 			// 
-			this.表示VToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.一覧表LToolStripMenuItem,
-            this.集計表示SToolStripMenuItem});
-			this.表示VToolStripMenuItem.Name = "表示VToolStripMenuItem";
-			this.表示VToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-			this.表示VToolStripMenuItem.Text = "表示(&V)";
+			this.品名DataGridViewTextBoxColumn.DataPropertyName = "品名";
+			this.品名DataGridViewTextBoxColumn.HeaderText = "品名";
+			this.品名DataGridViewTextBoxColumn.Name = "品名DataGridViewTextBoxColumn";
 			// 
-			// 一覧表LToolStripMenuItem
+			// 金額DataGridViewTextBoxColumn
 			// 
-			this.一覧表LToolStripMenuItem.Name = "一覧表LToolStripMenuItem";
-			this.一覧表LToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.一覧表LToolStripMenuItem.Text = "一覧表(&L)";
+			this.金額DataGridViewTextBoxColumn.DataPropertyName = "金額";
+			this.金額DataGridViewTextBoxColumn.HeaderText = "金額";
+			this.金額DataGridViewTextBoxColumn.Name = "金額DataGridViewTextBoxColumn";
 			// 
-			// 集計表示SToolStripMenuItem
+			// 備考DataGridViewTextBoxColumn
 			// 
-			this.集計表示SToolStripMenuItem.Name = "集計表示SToolStripMenuItem";
-			this.集計表示SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.集計表示SToolStripMenuItem.Text = "集計表示(&S)";
-			// 
-			// ヘルプHToolStripMenuItem
-			// 
-			this.ヘルプHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.バージョン情報VToolStripMenuItem});
-			this.ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
-			this.ヘルプHToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-			this.ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
-			// 
-			// バージョン情報VToolStripMenuItem
-			// 
-			this.バージョン情報VToolStripMenuItem.Name = "バージョン情報VToolStripMenuItem";
-			this.バージョン情報VToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.バージョン情報VToolStripMenuItem.Text = "バージョン情報(&V)";
+			this.備考DataGridViewTextBoxColumn.DataPropertyName = "備考";
+			this.備考DataGridViewTextBoxColumn.HeaderText = "備考";
+			this.備考DataGridViewTextBoxColumn.Name = "備考DataGridViewTextBoxColumn";
 			// 
 			// Form1
 			// 
@@ -219,6 +277,8 @@
 			this.MainMenu.ResumeLayout(false);
 			this.MainMenu.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.moneyDataSet)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.moneyDataTableBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -243,6 +303,13 @@
 		private System.Windows.Forms.ToolStripMenuItem 集計表示SToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem ヘルプHToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem バージョン情報VToolStripMenuItem;
+		private System.Windows.Forms.DataGridViewTextBoxColumn 日付DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn 分類DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn 品名DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn 金額DataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn 備考DataGridViewTextBoxColumn;
+		private System.Windows.Forms.BindingSource moneyDataTableBindingSource;
+		private MoneyDataSet moneyDataSet;
 	}
 }
 

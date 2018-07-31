@@ -35,15 +35,15 @@
 			this.Price = new System.Windows.Forms.Label();
 			this.Remark = new System.Windows.Forms.Label();
 			this.cmbCategory = new System.Windows.Forms.ComboBox();
+			this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.categoryDataSet = new MyHousekeepingBook.CategoryDataSet();
 			this.txtItem = new System.Windows.Forms.TextBox();
 			this.txtMoney = new System.Windows.Forms.TextBox();
 			this.txtRemarks = new System.Windows.Forms.TextBox();
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.categoryDataSet = new MyHousekeepingBook.CategoryDataSet();
-			this.categoryDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// monCalendar
@@ -61,7 +61,7 @@
 			this.Category.Name = "Category";
 			this.Category.Size = new System.Drawing.Size(35, 13);
 			this.Category.TabIndex = 1;
-			this.Category.Text = "分類";
+			this.Category.Text = "種類";
 			// 
 			// ItemName
 			// 
@@ -71,7 +71,7 @@
 			this.ItemName.Name = "ItemName";
 			this.ItemName.Size = new System.Drawing.Size(35, 13);
 			this.ItemName.TabIndex = 2;
-			this.ItemName.Text = "品名";
+			this.ItemName.Text = "価数";
 			// 
 			// Price
 			// 
@@ -103,6 +103,16 @@
 			this.cmbCategory.Name = "cmbCategory";
 			this.cmbCategory.Size = new System.Drawing.Size(121, 20);
 			this.cmbCategory.TabIndex = 5;
+			// 
+			// categoryDataTableBindingSource
+			// 
+			this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
+			this.categoryDataTableBindingSource.DataSource = this.categoryDataSet;
+			// 
+			// categoryDataSet
+			// 
+			this.categoryDataSet.DataSetName = "CategoryDataSet";
+			this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
 			// 
 			// txtItem
 			// 
@@ -149,16 +159,6 @@
 			this.buttonCancel.Text = "キャンセル";
 			this.buttonCancel.UseVisualStyleBackColor = false;
 			// 
-			// categoryDataSet
-			// 
-			this.categoryDataSet.DataSetName = "CategoryDataSet";
-			this.categoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-			// 
-			// categoryDataTableBindingSource
-			// 
-			this.categoryDataTableBindingSource.DataMember = "CategoryDataTable";
-			this.categoryDataTableBindingSource.DataSource = this.categoryDataSet;
-			// 
 			// ItemForms
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -178,8 +178,8 @@
 			this.Name = "ItemForms";
 			this.Text = "登録";
 			this.Load += new System.EventHandler(this.ItemForms_Load);
-			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

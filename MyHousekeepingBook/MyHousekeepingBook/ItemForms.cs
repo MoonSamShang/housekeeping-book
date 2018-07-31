@@ -5,20 +5,17 @@ namespace MyHousekeepingBook
 {
 	public partial class ItemForms : Form
 	{
-		public ItemForms()
+		public ItemForms(CategoryDataSet dsCategory)
 		{
 			InitializeComponent();
+			categoryDataSet.Merge(dsCategory);
 		}
 
-		private void ItemForms_Load(object sender, EventArgs e)
+		public void ItemForms_Load(object sender, EventArgs e)
 		{
 
 		}
 
-		private void monCalendar_DateChanged(object sender, DateRangeEventArgs e)
-		{
-
-		}
-
+		
 	}
 }

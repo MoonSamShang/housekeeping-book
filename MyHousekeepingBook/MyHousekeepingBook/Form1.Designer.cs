@@ -89,14 +89,14 @@
 			// SaveStripMenuItem
 			// 
 			this.SaveStripMenuItem.Name = "SaveStripMenuItem";
-			this.SaveStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.SaveStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.SaveStripMenuItem.Text = "保存(S)";
 			this.SaveStripMenuItem.Click += new System.EventHandler(this.SaveStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
 			this.ExitToolStripMenuItem.Text = "終了(&X)";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -113,7 +113,7 @@
 			// 追加AToolStripMenuItem
 			// 
 			this.追加AToolStripMenuItem.Name = "追加AToolStripMenuItem";
-			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.追加AToolStripMenuItem.Text = "追加(&A)";
 			this.追加AToolStripMenuItem.Click += new System.EventHandler(this.追加AToolStripMenuItem_Click);
 			// 
@@ -122,11 +122,12 @@
 			this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
 			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.変更CToolStripMenuItem.Text = "変更(&C)";
+			this.変更CToolStripMenuItem.Click += new System.EventHandler(this.変更CToolStripMenuItem_Click);
 			// 
 			// 削除DToolStripMenuItem
 			// 
 			this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
-			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.削除DToolStripMenuItem.Text = "削除(&D)";
 			// 
 			// 表示VToolStripMenuItem
@@ -266,6 +267,7 @@
 			this.buttonChange.TabIndex = 5;
 			this.buttonChange.Text = "変更";
 			this.buttonChange.UseVisualStyleBackColor = false;
+			this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
 			// 
 			// buttonDelete
 			// 

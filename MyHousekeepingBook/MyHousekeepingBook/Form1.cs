@@ -143,6 +143,52 @@ namespace MyHousekeepingBook
 				sr.Close();
 			}
 			
-		} 
+		}
+
+		//データ変更機能のスープルーチンメソッドの生成
+		private void UpdateData()
+		{
+			//選択された列の値を代入するインスタンスの生成
+			int nowRow = dgv.CurrentRow.Index;
+
+			//各columnから値を代入するインスタンスの生成
+			DateTime oldDate = DateTime.Parse(dgv.Rows[nowRow].Cells[0].Value.ToString());
+			string oldCategory = dgv.Rows[nowRow].Cells[1].Value.ToString();
+			string oldItem = dgv.Rows[nowRow].Cells[2].Value.ToString();
+			int oldMoney = int.Parse(dgv.Rows[nowRow].Cells[3].Value.ToString());
+			string oldRemarks = dgv.Rows[nowRow].Cells[4].Value.ToString();
+
+			//各columnから値を取得する
+			//コンストラクタの呼び出し
+			ItemForms frmItem = new ItemForms(categoryDataSet1,
+												oldDate,
+												oldCategory,
+												oldItem,
+												oldMoney,
+												oldRemarks);
+
+			//取得した値を登録画面の呼び出し時に表示する
+			DialogResult drRet = frmItem.ShowDialog();
+
+			//変更の処理
+			if (drRet == DialogResult.OK)
+			{
+				dgv.Rows[nowRow].Cells[0].Value = frmItem.monCalendar.SelectionRange.Start;
+				dgv.Rows[nowRow].Cells[1].Value = frmItem.cmbCategory.Text;
+				dgv.Rows[nowRow].Cells[2].Value = frmItem.txtItem.Text;
+				dgv.Rows[nowRow].Cells[3].Value = int.Parse(frmItem.mtxtMoney.Text.ToString());
+				dgv.Rows[nowRow].Cells[4].Value = frmItem.txtRemarks.Text;
+			}
+		}
+
+		private void buttonChange_Click(object sender, EventArgs e)
+		{
+			UpdateData();
+		}
+
+		private void 変更CToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			UpdateData();
+		}
 	}
 }

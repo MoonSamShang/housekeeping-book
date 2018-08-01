@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace MyHousekeepingBook
 {
@@ -19,6 +21,7 @@ namespace MyHousekeepingBook
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			LoadData();
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("給料", "入金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("食費", "出金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("雑費", "出金");
@@ -75,5 +78,71 @@ namespace MyHousekeepingBook
 		{
 			int rowIndex = e.RowIndex;
 		}
+
+		private void SaveDate()
+		{
+			string path = "MoneyData.csv"; //出力ファイル
+			string strData = null;
+			StreamWriter sw = new StreamWriter(
+					path,
+					false,
+					Encoding.Default);
+			foreach (MoneyDataSet.moneyDataTableRow drMoney in moneyDataSet.moneyDataTable)
+			{
+				strData = drMoney.日付.ToShortDateString() + ","
+						+ drMoney.分類 + ","
+						+ drMoney.品名 + ","
+						+ drMoney.金額 + ","
+						+ drMoney.備考;
+				sw.WriteLine(strData);
+			}
+			sw.Close();
+		}
+
+		private void SaveStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.SaveDate();
+		}
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			this.SaveDate();
+		}
+
+		private void LoadData()
+		{
+			string path = "MoneyData.csv"; //入力ファイル名
+			string delimStr = ",";　//区切り文字
+			char[] delimiter = delimStr.ToCharArray();　//区切り文字をまとめる
+			string[] strData;　//分解後の文字の入れ物
+			string strLine; //1行分のデータ
+
+			//ファイルが存在するかの確認
+			bool fileExists = File.Exists(path);
+			if (fileExists)
+			{
+				//存在する場合ファイルを読み込んだ後、代入するインスタンスの生成
+				StreamReader sr = new StreamReader("MoneyData.csv", Encoding.Default);
+
+				//CSVファイルのデータがある間繰り返し
+				while (sr.Peek() > 0)
+				{
+					//streamの一行分を読み込んで、Stringを返す
+					strLine = sr.ReadLine();
+					//読み込んだStringデータを区切ってArrayに代入する
+					strData = strLine.Split(delimiter);
+					//データテーブルに値を付けてそれぞれ入れる
+					moneyDataSet.moneyDataTable.AddmoneyDataTableRow(
+												DateTime.Parse(strData[0]),
+												strData[1],
+												strData[2],
+												int.Parse(strData[3]),
+												strData[4]);
+				}
+				//StreamReaderを閉じる
+				sr.Close();
+			}
+			
+		} 
 	}
 }

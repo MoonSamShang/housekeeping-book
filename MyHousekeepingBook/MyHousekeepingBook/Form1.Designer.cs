@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.MainMenu = new System.Windows.Forms.MenuStrip();
 			this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +74,7 @@
             this.ヘルプHToolStripMenuItem});
 			this.MainMenu.Location = new System.Drawing.Point(0, 0);
 			this.MainMenu.Name = "MainMenu";
-			this.MainMenu.Size = new System.Drawing.Size(800, 24);
+			this.MainMenu.Size = new System.Drawing.Size(650, 24);
 			this.MainMenu.TabIndex = 2;
 			// 
 			// FileToolStripMenuItem
@@ -87,13 +89,14 @@
 			// SaveStripMenuItem
 			// 
 			this.SaveStripMenuItem.Name = "SaveStripMenuItem";
-			this.SaveStripMenuItem.Size = new System.Drawing.Size(113, 22);
+			this.SaveStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.SaveStripMenuItem.Text = "保存(S)";
+			this.SaveStripMenuItem.Click += new System.EventHandler(this.SaveStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.ExitToolStripMenuItem.Text = "終了(&X)";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -110,20 +113,20 @@
 			// 追加AToolStripMenuItem
 			// 
 			this.追加AToolStripMenuItem.Name = "追加AToolStripMenuItem";
-			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.追加AToolStripMenuItem.Text = "追加(&A)";
 			this.追加AToolStripMenuItem.Click += new System.EventHandler(this.追加AToolStripMenuItem_Click);
 			// 
 			// 変更CToolStripMenuItem
 			// 
 			this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
-			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.変更CToolStripMenuItem.Text = "変更(&C)";
 			// 
 			// 削除DToolStripMenuItem
 			// 
 			this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
-			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.削除DToolStripMenuItem.Text = "削除(&D)";
 			// 
 			// 表示VToolStripMenuItem
@@ -164,7 +167,18 @@
 			// dgv
 			// 
 			this.dgv.AutoGenerateColumns = false;
-			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+			this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Snow;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this.dgv.ColumnHeadersHeight = 30;
 			this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.日付DataGridViewTextBoxColumn,
             this.分類DataGridViewTextBoxColumn,
@@ -172,10 +186,20 @@
             this.金額DataGridViewTextBoxColumn,
             this.備考DataGridViewTextBoxColumn});
 			this.dgv.DataSource = this.moneyDataTableBindingSource;
-			this.dgv.Location = new System.Drawing.Point(37, 51);
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = System.Drawing.Color.Bisque;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgv.DefaultCellStyle = dataGridViewCellStyle4;
+			this.dgv.GridColor = System.Drawing.Color.LightGray;
+			this.dgv.Location = new System.Drawing.Point(37, 49);
 			this.dgv.Name = "dgv";
+			this.dgv.RowHeadersWidth = 60;
 			this.dgv.RowTemplate.Height = 21;
-			this.dgv.Size = new System.Drawing.Size(730, 337);
+			this.dgv.Size = new System.Drawing.Size(569, 332);
 			this.dgv.TabIndex = 3;
 			this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
 			this.dgv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseClick);
@@ -258,7 +282,7 @@
 			// 
 			this.buttonEnd.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.buttonEnd.Font = new System.Drawing.Font("MS UI Gothic", 10F, System.Drawing.FontStyle.Bold);
-			this.buttonEnd.Location = new System.Drawing.Point(687, 408);
+			this.buttonEnd.Location = new System.Drawing.Point(526, 408);
 			this.buttonEnd.Name = "buttonEnd";
 			this.buttonEnd.Size = new System.Drawing.Size(80, 30);
 			this.buttonEnd.TabIndex = 7;
@@ -276,7 +300,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(650, 452);
 			this.Controls.Add(this.buttonEnd);
 			this.Controls.Add(this.buttonDelete);
 			this.Controls.Add(this.buttonChange);
@@ -285,6 +309,7 @@
 			this.Controls.Add(this.dgv);
 			this.Name = "Form1";
 			this.Text = "簡易家計簿";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.MainMenu.ResumeLayout(false);
 			this.MainMenu.PerformLayout();

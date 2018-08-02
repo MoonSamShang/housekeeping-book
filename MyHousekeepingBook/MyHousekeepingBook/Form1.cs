@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -36,6 +30,7 @@ namespace MyHousekeepingBook
 		//Create sub routine method to be utilized in different places
 		private void AddData()
 		{
+			//登録画面の呼び出し
 			ItemForms frmItem = new ItemForms(categoryDataSet1);
 			DialogResult drRet = frmItem.ShowDialog();
 
@@ -47,7 +42,7 @@ namespace MyHousekeepingBook
 					frmItem.monCalendar.SelectionRange.Start,
 					frmItem.cmbCategory.Text,
 					frmItem.txtItem.Text,
-					//data type casting
+					//data type casting from text(string) into int datatype
 					int.Parse(frmItem.mtxtMoney.Text),
 					frmItem.txtRemarks.Text);
 			}
@@ -61,6 +56,7 @@ namespace MyHousekeepingBook
 
 		private void buttonEnd_Click(object sender, EventArgs e)
 		{
+			this.SaveData();
 			this.Close();
 		}
 
@@ -69,20 +65,14 @@ namespace MyHousekeepingBook
 			this.Close();
 		}
 
-		private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		//登録されたデータをDGVからデータセットに格納する処理
+		private void SaveData()
 		{
-		
-		}
-
-		private void dgv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-		{
-			int rowIndex = e.RowIndex;
-		}
-
-		private void SaveDate()
-		{
+			//CSVfileの名前を付ける
 			string path = "MoneyData.csv"; //出力ファイル
+			//インスタンスの初期化
 			string strData = null;
+			//create object instance for streamwriter
 			StreamWriter sw = new StreamWriter(
 					path,
 					false,
@@ -101,12 +91,12 @@ namespace MyHousekeepingBook
 
 		private void SaveStripMenuItem_Click(object sender, EventArgs e)
 		{
-			this.SaveDate();
+			this.SaveData();
 		}
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			this.SaveDate();
+			this.SaveData();
 		}
 
 		private void LoadData()
@@ -152,6 +142,7 @@ namespace MyHousekeepingBook
 			int nowRow = dgv.CurrentRow.Index;
 
 			//各columnから値を代入するインスタンスの生成
+
 			DateTime oldDate = DateTime.Parse(dgv.Rows[nowRow].Cells[0].Value.ToString());
 			string oldCategory = dgv.Rows[nowRow].Cells[1].Value.ToString();
 			string oldItem = dgv.Rows[nowRow].Cells[2].Value.ToString();
@@ -190,5 +181,94 @@ namespace MyHousekeepingBook
 		{
 			UpdateData();
 		}
+
+		private void DeleteData()
+		{
+			int nowRow = dgv.CurrentRow.Index;
+			dgv.Rows.RemoveAt(nowRow);
+		}
+
+		private void buttonDelete_Click(object sender, EventArgs e)
+		{
+			DeleteData();
+		}
+
+		private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			DeleteData();
+		}
+
+		//出力金額を集計するメソッド
+		private void CalcSummary()
+		{
+			string expression;
+			//DataTableの初期化
+			summaryDataSet.SumDataTable.Clear();
+			//
+			foreach (MoneyDataSet.moneyDataTableRow  drMoney 
+				in moneyDataSet.moneyDataTable)
+			{
+				expression = "日付= '" + drMoney.日付.ToShortDateString() + "'";
+				
+				//データ型casting日付をSumDataTableRow[]にする
+				SummaryDataSet.SumDataTableRow[] curDR = (SummaryDataSet.SumDataTableRow[])
+														summaryDataSet.SumDataTable.Select(expression);
+
+				//CategoryDataSetの中の“入出金分類”を使うので
+				CategoryDataSet.CategoryDataTableRow[] selectedDataRow;
+				selectedDataRow = (CategoryDataSet.CategoryDataTableRow[])
+				categoryDataSet1.CategoryDataTable.Select("分類= '" + drMoney.分類 + "'");
+
+				//if there is no data entry at the same date 
+				if (curDR.Length == 0)
+				{
+					//addrow to the table
+					//set the selectedDataRow as a base data that's why use zero
+					if (selectedDataRow[0].入出金分類　== "入金")
+					{
+						summaryDataSet.SumDataTable.AddSumDataTableRow(drMoney.日付,
+																		drMoney.金額,
+																		0);
+					}
+					else if (selectedDataRow[0].入出金分類 == "出金")
+					{
+						summaryDataSet.SumDataTable.AddSumDataTableRow(drMoney.日付,
+																		0,
+																		drMoney.金額);
+					}
+				}
+				//if there is data entry with the same date
+				else
+				{
+					if (selectedDataRow[0].入出金分類 == "入金")
+					{
+						//cur = current date
+						curDR[0].入金合計 += drMoney.金額;
+
+					}
+					else if (selectedDataRow[0].入出金分類 == "出金")
+					{
+						curDR[0].出金合計 += drMoney.金額;
+					}
+				}
+			}
+
+		}
+
+		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			CalcSummary();
+		}
+
+		private void 一覧表LToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			tabControl1.SelectTab(tabList);
+		}
+
+		private void 集計表示SToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			tabControl1.SelectTab(tabSummary);
+		}
+
 	}
 }

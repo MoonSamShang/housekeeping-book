@@ -132,7 +132,7 @@
 			this.buttonOK.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.buttonOK.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-			this.buttonOK.Location = new System.Drawing.Point(27, 230);
+			this.buttonOK.Location = new System.Drawing.Point(268, 230);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(80, 30);
 			this.buttonOK.TabIndex = 9;
@@ -144,7 +144,7 @@
 			this.buttonCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold);
-			this.buttonCancel.Location = new System.Drawing.Point(349, 230);
+			this.buttonCancel.Location = new System.Drawing.Point(415, 230);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(80, 30);
 			this.buttonCancel.TabIndex = 10;

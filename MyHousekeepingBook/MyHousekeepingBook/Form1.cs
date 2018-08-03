@@ -10,12 +10,14 @@ namespace MyHousekeepingBook
 	{
 		public Form1()
 		{
+			//実行じにForm1が立ち上がりまし
 			InitializeComponent();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			LoadData();
+			//Form1からCategoryDataSetにデータの入力
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("給料", "入金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("食費", "出金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("雑費", "出金");
@@ -35,13 +37,13 @@ namespace MyHousekeepingBook
 		//Create sub routine method to be utilized in different places
 		private void AddData()
 		{
-
+			//登録画面の表示
 			ItemForms itemForms = new ItemForms(categoryDataSet1);
 			DialogResult diaRet = itemForms.ShowDialog();
 
+			//登録ボタンを押した場合
 			if (diaRet == DialogResult.OK)
 			{
-
 				moneyDataSet.moneyDataTable.Rows.Add(itemForms.monCalendar.SelectionRange.Start,
 													 itemForms.cmbCategory.Text,
 													 itemForms.txtItem.Text,
@@ -173,19 +175,59 @@ namespace MyHousekeepingBook
 		//出力金額を集計するメソッド
 		private void CalcSummary()
 		{
-		
+
+			foreach (MoneyDataSet.moneyDataTableRow drMoney in moneyDataSet.moneyDataTable)
+			{
+					//drMoney.日付.ToShortDateString();
+					SummaryDataSet.SumDataTableRow[] curDR = (SummaryDataSet.SumDataTableRow[])summaryDataSet.SumDataTable.
+																Select("日付= '" + drMoney.日付.ToShortDateString() + "'");
+					CategoryDataSet.CategoryDataTableRow[] catData = (CategoryDataSet.CategoryDataTableRow[])categoryDataSet1.CategoryDataTable.
+																Select("分類= '" + drMoney.分類.ToString() + "'");
+
+				if (curDR.Length == 0)
+				{
+					if (catData[0].入出金分類 == "入金")
+					{
+						summaryDataSet.SumDataTable.AddSumDataTableRow(drMoney.日付,
+																		drMoney.金額,
+																		0);																	
+					}
+					else if (catData[0].入出金分類 == "出金")
+					{
+						summaryDataSet.SumDataTable.AddSumDataTableRow(drMoney.日付,
+																		0,
+																		drMoney.金額);
+					}
+				}
+				else
+				{
+					if (catData[0].入出金分類 == "入金")
+					{
+						curDR[0].入金合計 += drMoney.金額;
+					}
+					else if (catData[0].入出金分類 == "出金")
+					{
+						curDR[0].出金合計 += drMoney.金額;
+					}
+				}
+
+			}
+
 		}
 
 		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			this.CalcSummary();
 		}
 
 		private void 一覧表LToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+
 		}
 
 		private void 集計表示SToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			
 		}
 
 	}

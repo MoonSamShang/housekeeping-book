@@ -8,15 +8,7 @@ namespace MyHousekeepingBook
 		public ItemForms(CategoryDataSet dsCategory)
 		{
 			InitializeComponent();
+			categoryDataSet.Merge(dsCategory);
 		}
-
-		
-
-		public void ItemForms_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		
 	}
 }

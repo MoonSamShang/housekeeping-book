@@ -178,7 +178,6 @@
 			this.Controls.Add(this.monCalendar);
 			this.Name = "ItemForms";
 			this.Text = "登録";
-			this.Load += new System.EventHandler(this.ItemForms_Load);
 			((System.ComponentModel.ISupportInitialize)(this.categoryDataTableBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.categoryDataSet)).EndInit();
 			this.ResumeLayout(false);

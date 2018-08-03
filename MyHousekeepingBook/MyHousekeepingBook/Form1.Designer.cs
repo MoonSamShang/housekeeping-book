@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.MainMenu = new System.Windows.Forms.MenuStrip();
 			this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.SaveStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,14 +105,14 @@
 			// SaveStripMenuItem
 			// 
 			this.SaveStripMenuItem.Name = "SaveStripMenuItem";
-			this.SaveStripMenuItem.Size = new System.Drawing.Size(113, 22);
+			this.SaveStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.SaveStripMenuItem.Text = "保存(S)";
 			this.SaveStripMenuItem.Click += new System.EventHandler(this.SaveStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.ExitToolStripMenuItem.Text = "終了(&X)";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -129,21 +129,21 @@
 			// 追加AToolStripMenuItem
 			// 
 			this.追加AToolStripMenuItem.Name = "追加AToolStripMenuItem";
-			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.追加AToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.追加AToolStripMenuItem.Text = "追加(&A)";
 			this.追加AToolStripMenuItem.Click += new System.EventHandler(this.追加AToolStripMenuItem_Click);
 			// 
 			// 変更CToolStripMenuItem
 			// 
 			this.変更CToolStripMenuItem.Name = "変更CToolStripMenuItem";
-			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.変更CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.変更CToolStripMenuItem.Text = "変更(&C)";
 			this.変更CToolStripMenuItem.Click += new System.EventHandler(this.変更CToolStripMenuItem_Click);
 			// 
 			// 削除DToolStripMenuItem
 			// 
 			this.削除DToolStripMenuItem.Name = "削除DToolStripMenuItem";
-			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.削除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.削除DToolStripMenuItem.Text = "削除(&D)";
 			this.削除DToolStripMenuItem.Click += new System.EventHandler(this.削除DToolStripMenuItem_Click);
 			// 
@@ -191,14 +191,14 @@
 			this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.dgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
 			this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Snow;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+			dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Snow;
+			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgv.ColumnHeadersHeight = 30;
 			this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.日付DataGridViewTextBoxColumn,
@@ -207,14 +207,14 @@
             this.金額DataGridViewTextBoxColumn,
             this.備考DataGridViewTextBoxColumn});
 			this.dgv.DataSource = this.moneyDataTableBindingSource;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.Bisque;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = System.Drawing.Color.Bisque;
+			dataGridViewCellStyle5.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgv.DefaultCellStyle = dataGridViewCellStyle5;
 			this.dgv.GridColor = System.Drawing.Color.SeaShell;
 			this.dgv.Location = new System.Drawing.Point(-4, 0);
 			this.dgv.Name = "dgv";
@@ -337,14 +337,14 @@
 			this.SumDgv.GridColor = System.Drawing.Color.SeaShell;
 			this.SumDgv.Location = new System.Drawing.Point(-4, 0);
 			this.SumDgv.Name = "SumDgv";
-			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MistyRose;
-			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.SumDgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.Color.MistyRose;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.SumDgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.SumDgv.RowTemplate.Height = 21;
 			this.SumDgv.Size = new System.Drawing.Size(644, 400);
 			this.SumDgv.TabIndex = 0;

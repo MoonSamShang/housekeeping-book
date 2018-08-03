@@ -156,14 +156,18 @@ namespace MyHousekeepingBook
 
 		private void DeleteData()
 		{
+			int selectRow = dgv.CurrentRow.Index;
+			dgv.Rows.RemoveAt(selectRow);
 		}
 
 		private void buttonDelete_Click(object sender, EventArgs e)
 		{
+			this.DeleteData();
 		}
 
 		private void 削除DToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			this.DeleteData();
 		}
 
 		//出力金額を集計するメソッド

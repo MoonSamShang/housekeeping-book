@@ -121,15 +121,37 @@ namespace MyHousekeepingBook
 		//データ変更機能のスープルーチンメソッドの生成
 		private void UpdateData()
 		{
-		
+			int selectRow = dgv.CurrentRow.Index;
+
+			ItemForms update = new ItemForms(categoryDataSet1,
+											DateTime.Parse(dgv.CurrentRow.Cells[0].Value.ToString()),
+											dgv.CurrentRow.Cells[1].Value.ToString(),
+											dgv.CurrentRow.Cells[2].Value.ToString(),
+											dgv.CurrentRow.Cells[3].Value.ToString(),
+											dgv.CurrentRow.Cells[4].Value.ToString());
+
+			DialogResult diaRet = update.ShowDialog();
+
+			if (diaRet == DialogResult.OK)
+			{
+				dgv.CurrentRow.Cells[0].Value = update.monCalendar.SelectionRange.Start;
+				dgv.CurrentRow.Cells[1].Value = update.cmbCategory.Text;
+				dgv.CurrentRow.Cells[2].Value = update.txtItem.Text;
+				dgv.CurrentRow.Cells[3].Value = int.Parse(update.mtxtMoney.Text);
+				dgv.CurrentRow.Cells[4].Value = update.txtRemarks.Text;
+			}
+
+
 		}
 
 		private void buttonChange_Click(object sender, EventArgs e)
 		{
+			this.UpdateData();
 		}
 
 		private void 変更CToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			this.UpdateData();
 		}
 
 		private void DeleteData()

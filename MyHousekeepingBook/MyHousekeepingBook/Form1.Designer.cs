@@ -159,14 +159,14 @@
             // 一覧表LToolStripMenuItem
             // 
             this.一覧表LToolStripMenuItem.Name = "一覧表LToolStripMenuItem";
-            this.一覧表LToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.一覧表LToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.一覧表LToolStripMenuItem.Text = "一覧表(&L)";
             this.一覧表LToolStripMenuItem.Click += new System.EventHandler(this.一覧表LToolStripMenuItem_Click);
             // 
             // 集計表示SToolStripMenuItem
             // 
             this.集計表示SToolStripMenuItem.Name = "集計表示SToolStripMenuItem";
-            this.集計表示SToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.集計表示SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.集計表示SToolStripMenuItem.Text = "集計表示(&S)";
             this.集計表示SToolStripMenuItem.Click += new System.EventHandler(this.集計表示SToolStripMenuItem_Click);
             // 
@@ -218,6 +218,7 @@
             this.dgv.GridColor = System.Drawing.Color.SeaShell;
             this.dgv.Location = new System.Drawing.Point(-4, 0);
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 60;
             this.dgv.RowTemplate.Height = 21;
             this.dgv.Size = new System.Drawing.Size(658, 347);
@@ -228,30 +229,35 @@
             this.日付DataGridViewTextBoxColumn.DataPropertyName = "日付";
             this.日付DataGridViewTextBoxColumn.HeaderText = "日付";
             this.日付DataGridViewTextBoxColumn.Name = "日付DataGridViewTextBoxColumn";
+            this.日付DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 分類DataGridViewTextBoxColumn
             // 
             this.分類DataGridViewTextBoxColumn.DataPropertyName = "分類";
             this.分類DataGridViewTextBoxColumn.HeaderText = "分類";
             this.分類DataGridViewTextBoxColumn.Name = "分類DataGridViewTextBoxColumn";
+            this.分類DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 品名DataGridViewTextBoxColumn
             // 
             this.品名DataGridViewTextBoxColumn.DataPropertyName = "品名";
             this.品名DataGridViewTextBoxColumn.HeaderText = "品名";
             this.品名DataGridViewTextBoxColumn.Name = "品名DataGridViewTextBoxColumn";
+            this.品名DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 金額DataGridViewTextBoxColumn
             // 
             this.金額DataGridViewTextBoxColumn.DataPropertyName = "金額";
             this.金額DataGridViewTextBoxColumn.HeaderText = "金額";
             this.金額DataGridViewTextBoxColumn.Name = "金額DataGridViewTextBoxColumn";
+            this.金額DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 備考DataGridViewTextBoxColumn
             // 
             this.備考DataGridViewTextBoxColumn.DataPropertyName = "備考";
             this.備考DataGridViewTextBoxColumn.HeaderText = "備考";
             this.備考DataGridViewTextBoxColumn.Name = "備考DataGridViewTextBoxColumn";
+            this.備考DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // moneyDataTableBindingSource
             // 
@@ -337,6 +343,7 @@
             this.SumDgv.GridColor = System.Drawing.Color.SeaShell;
             this.SumDgv.Location = new System.Drawing.Point(-4, 0);
             this.SumDgv.Name = "SumDgv";
+            this.SumDgv.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -354,18 +361,21 @@
             this.日付DataGridViewTextBoxColumn1.DataPropertyName = "日付";
             this.日付DataGridViewTextBoxColumn1.HeaderText = "日付";
             this.日付DataGridViewTextBoxColumn1.Name = "日付DataGridViewTextBoxColumn1";
+            this.日付DataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // 入金合計DataGridViewTextBoxColumn
             // 
             this.入金合計DataGridViewTextBoxColumn.DataPropertyName = "入金合計";
             this.入金合計DataGridViewTextBoxColumn.HeaderText = "入金合計";
             this.入金合計DataGridViewTextBoxColumn.Name = "入金合計DataGridViewTextBoxColumn";
+            this.入金合計DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "出金合計";
             this.dataGridViewTextBoxColumn1.HeaderText = "出金合計";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // sumDataTableBindingSource
             // 

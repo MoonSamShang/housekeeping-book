@@ -41,18 +41,46 @@ namespace MyHousekeepingBook
 			ItemForms itemForms = new ItemForms(categoryDataSet1);
 			DialogResult diaRet = itemForms.ShowDialog();
 
-			//登録ボタンを押した場合
-			if (diaRet == DialogResult.OK)
-			{
-				moneyDataSet.moneyDataTable.Rows.Add(itemForms.monCalendar.SelectionRange.Start,
-													 itemForms.cmbCategory.Text,
-													 itemForms.txtItem.Text,
-													 int.Parse(itemForms.mtxtMoney.Text),
-													 itemForms.txtRemarks.Text);
-			}
+            //登録ボタンを押した場合
+            if (diaRet == DialogResult.OK)
+            {
 
+                if (string.IsNullOrEmpty(itemForms.mtxtMoney.Text))
+                {
+                    MessageBox.Show("金額を入れてください。",
+                                    "入力ミス！",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
 
-		}
+                   DialogResult result= itemForms.ShowDialog();
+
+                    if (result == DialogResult.Cancel)
+                    {
+                        itemForms.Close();
+
+                    }
+                    else
+                    {
+                        moneyDataSet.moneyDataTable.Rows.Add(itemForms.monCalendar.SelectionRange.Start,
+                                                         itemForms.cmbCategory.Text,
+                                                         itemForms.txtItem.Text,
+                                                         int.Parse(itemForms.mtxtMoney.Text),
+                                                         itemForms.txtRemarks.Text);
+                    }
+   
+                }
+
+                else
+                {
+                    moneyDataSet.moneyDataTable.Rows.Add(itemForms.monCalendar.SelectionRange.Start,
+                                                      itemForms.cmbCategory.Text,
+                                                      itemForms.txtItem.Text,
+                                                      int.Parse(itemForms.mtxtMoney.Text),
+                                                      itemForms.txtRemarks.Text);
+                }
+            }
+       
+        }
 
 		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -142,8 +170,6 @@ namespace MyHousekeepingBook
 				dgv.CurrentRow.Cells[3].Value = int.Parse(update.mtxtMoney.Text);
 				dgv.CurrentRow.Cells[4].Value = update.txtRemarks.Text;
 			}
-
-
 		}
 
 		private void buttonChange_Click(object sender, EventArgs e)
@@ -175,18 +201,20 @@ namespace MyHousekeepingBook
 		//出力金額を集計するメソッド
 		private void CalcSummary()
 		{
-
-			foreach (MoneyDataSet.moneyDataTableRow drMoney in moneyDataSet.moneyDataTable)
+            summaryDataSet.Clear();
+            foreach (MoneyDataSet.moneyDataTableRow drMoney in moneyDataSet.moneyDataTable)
 			{
 					//drMoney.日付.ToShortDateString();
 					SummaryDataSet.SumDataTableRow[] curDR = (SummaryDataSet.SumDataTableRow[])summaryDataSet.SumDataTable.
 																Select("日付= '" + drMoney.日付.ToShortDateString() + "'");
-					CategoryDataSet.CategoryDataTableRow[] catData = (CategoryDataSet.CategoryDataTableRow[])categoryDataSet1.CategoryDataTable.
-																Select("分類= '" + drMoney.分類.ToString() + "'");
+                    CategoryDataSet.CategoryDataTableRow[] catData = (CategoryDataSet.CategoryDataTableRow[])categoryDataSet1.CategoryDataTable.
+                                                               Select("分類= '" + drMoney.分類.ToString() + "'");
 
-				if (curDR.Length == 0)
+
+                if (curDR.Length == 0)
 				{
-					if (catData[0].入出金分類 == "入金")
+                   
+                    if (catData[0].入出金分類 == "入金")
 					{
 						summaryDataSet.SumDataTable.AddSumDataTableRow(drMoney.日付,
 																		drMoney.金額,
@@ -200,8 +228,8 @@ namespace MyHousekeepingBook
 					}
 				}
 				else
-				{
-					if (catData[0].入出金分類 == "入金")
+				{                   
+                    if (catData[0].入出金分類 == "入金")
 					{
 						curDR[0].入金合計 += drMoney.金額;
 					}
@@ -212,23 +240,22 @@ namespace MyHousekeepingBook
 				}
 
 			}
+            
+        }
 
-		}
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.CalcSummary();
+        }
 
-		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void 一覧表LToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			this.CalcSummary();
-		}
-
-		private void 一覧表LToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-
+            tabControl1.SelectTab(tabList);
 		}
 
 		private void 集計表示SToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			
-		}
-
-	}
+            tabControl1.SelectTab(tabSummary);         
+        }
+    }
 }

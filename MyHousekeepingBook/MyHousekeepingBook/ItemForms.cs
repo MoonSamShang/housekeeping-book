@@ -3,7 +3,8 @@ using System.Windows.Forms;
 
 namespace MyHousekeepingBook
 {
-	public partial class ItemForms : Form
+    //登録及び修正画面のクラス
+    public partial class ItemForms : Form
 	{
         //登録画面の分類にCategoryDataSetを引き数として渡す
         public ItemForms(CategoryDataSet dsCategory)
@@ -13,7 +14,7 @@ namespace MyHousekeepingBook
             categoryDataSet.Merge(dsCategory);
 		}
 
-        //メソッドオーバライド
+        //コンストラクタオーバーロード
         //データ変更する際に、登録画面に前回入力したデータを引き数として渡す
         public ItemForms(CategoryDataSet dsCategory,
 						DateTime oldDate,

@@ -6,24 +6,28 @@ using System.Windows.Forms;
 
 namespace MyHousekeepingBook
 {
-	public partial class Form1 : Form
+    //簡易家計簿のメイン画面のクラス
+    public partial class Form1 : Form
 	{
 		public Form1()
 		{
-			//実行じにForm1が立ち上がりまし
+			//実行じにForm1が立ち上がります
 			InitializeComponent();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+    
+        private void Form1_Load(object sender, EventArgs e)
 		{
-			LoadData();
-			//Form1からCategoryDataSetにデータの入力
+            //CSVファイルのデータを読み込んで表示するメソッドの呼び出し
+            LoadData();
+			
+            //Form1からCategoryDataSetにデータの入力
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("給料", "入金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("食費", "出金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("雑費", "出金");
 			categoryDataSet1.CategoryDataTable.AddCategoryDataTableRow("住居", "出金");
 		}
-        #region
+        #region　イベントハンドラー
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             this.AddData();
@@ -90,7 +94,6 @@ namespace MyHousekeepingBook
 
         #endregion
 
-
         //moneyDataTableにデータを追加するメソッド
         private void AddData()
 		{
@@ -110,6 +113,7 @@ namespace MyHousekeepingBook
                                     MessageBoxIcon.Warning);
 
                 }
+                //入力したデータをDataGridViewに表示させる処理
                 else
                 {
                     moneyDataSet.moneyDataTable.Rows.Add(itemForms.monCalendar.SelectionRange.Start,
@@ -198,6 +202,7 @@ namespace MyHousekeepingBook
                                     MessageBoxIcon.Warning);
 
                 }
+                //変更したデータをDataGridViewに表示させる処理
                 else
                 {
                     dgv.CurrentRow.Cells[0].Value = update.monCalendar.SelectionRange.Start;

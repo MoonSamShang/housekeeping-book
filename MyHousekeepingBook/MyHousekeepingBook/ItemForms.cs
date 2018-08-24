@@ -3,15 +3,20 @@ using System.Windows.Forms;
 
 namespace MyHousekeepingBook
 {
-	public partial class ItemForms : Form
+    //登録及び修正画面のクラス
+    public partial class ItemForms : Form
 	{
-		public ItemForms(CategoryDataSet dsCategory)
+        //登録画面の分類にCategoryDataSetを引き数として渡す
+        public ItemForms(CategoryDataSet dsCategory)
 		{
-			InitializeComponent();
-			categoryDataSet.Merge(dsCategory);
+            //登録画面の初期か
+            InitializeComponent();
+            categoryDataSet.Merge(dsCategory);
 		}
 
-		public ItemForms(CategoryDataSet dsCategory,
+        //コンストラクタオーバーロード
+        //データ変更する際に、登録画面に前回入力したデータを引き数として渡す
+        public ItemForms(CategoryDataSet dsCategory,
 						DateTime oldDate,
 						string oldCatagory,
 						string oldItem,
